@@ -24,21 +24,41 @@ currentPrice.onkeydown = function(e) {
 }
 
 function calculateProfitLoss(){
-    var costPrice = initalPrice.value * quantity.value;
-    var sellingPrice = currentPrice.value * quantity.value;
-    console.log(costPrice);
-    if(costPrice<sellingPrice){
-        var profit = sellingPrice - costPrice;
-        var profitPercentage = (profit * 100 / costPrice).toFixed(2);
-        output.innerText = "Hoorrayy!! You are in a Profit of Rs. " + profit + " and your profit percentage is " + profitPercentage + "%.";
+    if(initalPrice.value === ""){
+        output.innerText = "Please enter every field";
+        output.style.color ="red";
+        
+        initalPrice.focus();
+        
     }
-    else if(sellingPrice < costPrice){
-        var loss = costPrice - sellingPrice;
-        var lossPercentage = (loss * 100 / costPrice).toFixed(2);
-        output.innerText = "Oohh noo!! You are in a Loss of Rs. " + loss + " and your loss percentage is " + lossPercentage + "%.";
+    else if(quantity.value === ""){
+        output.innerText = "Please enter every field";
+        output.style.color ="red";
+        quantity.focus();
     }
-    else {
-        output.innerText = "You are currently not in loss, but not in profit either...";
+    else if(currentPrice.value === ""){
+        output.innerText = "Please enter every field";
+        output.style.color ="red";
+        currentPrice.focus();
+    }
+    else{
+        output.style.color = "black";
+        var costPrice = initalPrice.value * quantity.value;
+        var sellingPrice = currentPrice.value * quantity.value;
+        console.log(costPrice);
+        if(costPrice<sellingPrice){
+            var profit = sellingPrice - costPrice;
+            var profitPercentage = (profit * 100 / costPrice).toFixed(2);
+            output.innerText = "Hoorrayy!! You are in a Profit of Rs. " + profit + " and your profit percentage is " + profitPercentage + "%.";
+        }
+        else if(sellingPrice < costPrice){
+            var loss = costPrice - sellingPrice;
+            var lossPercentage = (loss * 100 / costPrice).toFixed(2);
+            output.innerText = "Oohh noo!! You are in a Loss of Rs. " + loss + " and your loss percentage is " + lossPercentage + "%.";
+        }
+        else {
+            output.innerText = "You are currently not in loss, but not in profit either...";
+        }
     }
 }
 
