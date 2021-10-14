@@ -4,6 +4,25 @@ var currentPrice = document.querySelector("#currPrice");
 var btnSubmit = document.querySelector("#btnSubmit");
 var output = document.querySelector("#output");
 
+
+initalPrice.onkeydown = function(e) {
+    if(!((e.keyCode > 96 && e.keyCode < 106) || (e.keyCode > 48 && e.keyCode < 58)  || e.keyCode == 8 || e.keyCode == 9)) {
+        return false;
+    }
+}
+
+quantity.onkeydown = function(e) {
+    if(!((e.keyCode > 96 && e.keyCode < 106) || (e.keyCode > 48 && e.keyCode < 58)  || e.keyCode == 8  || e.keyCode == 9)) {
+        return false;
+    }
+}
+
+currentPrice.onkeydown = function(e) {
+    if(!((e.keyCode > 96 && e.keyCode < 106) || (e.keyCode > 48 && e.keyCode < 58)  || e.keyCode == 8  || e.keyCode == 9)) {
+        return false;
+    }
+}
+
 function calculateProfitLoss(){
     var costPrice = initalPrice.value * quantity.value;
     var sellingPrice = currentPrice.value * quantity.value;
