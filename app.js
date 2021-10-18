@@ -6,7 +6,7 @@ var output = document.querySelector("#output");
 
 
 initalPrice.onkeydown = function(e) {
-    if(!((e.keyCode > 96 && e.keyCode < 106) || (e.keyCode > 48 && e.keyCode < 58)  || e.keyCode == 8 || e.keyCode == 9 || e.keyCode == 110 || e.keyCode == 190)) {
+    if(!((e.keyCode >= 96 && e.keyCode < 106) || (e.keyCode > 48 && e.keyCode < 58)  || e.keyCode == 8 || e.keyCode == 9 || e.keyCode == 110 || e.keyCode == 190)) {
         return false;
     }
 }
@@ -18,7 +18,7 @@ quantity.onkeydown = function(e) {
 }
 
 currentPrice.onkeydown = function(e) {
-    if(!((e.keyCode > 96 && e.keyCode < 106) || (e.keyCode > 48 && e.keyCode < 58)  || e.keyCode == 8  || e.keyCode == 9 || e.keyCode == 110 || e.keyCode == 190)) {
+    if(!((e.keyCode >= 96 && e.keyCode < 106) || (e.keyCode > 48 && e.keyCode < 58)  || e.keyCode == 8  || e.keyCode == 9 || e.keyCode == 110 || e.keyCode == 190)) {
         return false;
     }
 }
@@ -42,10 +42,20 @@ function calculateProfitLoss(){
         currentPrice.focus();
     }
     else{
-        if(quantity.value == 0){
+        if(initalPrice.value == 0){
+            output.innerText = "Inital Price cannot be zero!!!";
+            output.style.color ="red";
+            initalPrice.focus();
+        }
+        else if(quantity.value == 0){
             output.innerText = "Quantity cannot be zero!!!";
             output.style.color ="red";
             quantity.focus();
+        }
+        else if(currentPrice.value == 0){
+            output.innerText = "Current Price cannot be zero!!!";
+            output.style.color ="red";
+            currentPrice.focus();
         }
         else {
             output.style.color = "black";
